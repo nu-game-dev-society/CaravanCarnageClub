@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
+    #region Singleton Pattern
+    public static UIManager Instance { get; private set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Awake()
+    {
+        if(Instance == null)
+            Instance = this;
+    }
+#endregion
+    [SerializeField]
+    Text timer;
+    public void UpdateTimer(int time)
+    {
+        timer.text = time.ToString();
+    }
 }
