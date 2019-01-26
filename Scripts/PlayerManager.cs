@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour {
         {
             activateCaravan();
         }
+
+        caravansCollected = Mathf.Clamp(caravansCollected, 0, Caravans.Length);
     }
 
     public void activateCaravan()
@@ -34,10 +36,12 @@ public class PlayerManager : MonoBehaviour {
     {
         for (int i = startIndex; i < Caravans.Length; i++)
         {
-
-            Caravans[i].GetComponent<MeshRenderer>().enabled = false;
-            Caravans[i].GetComponent<Collider>().enabled = false;
-            caravansCollected -= 1;
+            if (Caravans[i].GetComponent<MeshRenderer>().enabled == true)
+            {
+                Caravans[i].GetComponent<MeshRenderer>().enabled = false;
+                Caravans[i].GetComponent<Collider>().enabled = false;
+                caravansCollected -= 1;
+            }
             //TODO INSTANTIATE EXPLOSION AT POSITION!
         }
     }
