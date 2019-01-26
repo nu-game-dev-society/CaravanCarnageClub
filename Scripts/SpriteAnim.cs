@@ -31,7 +31,7 @@ public class SpriteAnim : MonoBehaviour
             spr.sprite = images[currentFrame];
 
             currentFrame++;
-            if (currentFrame > images.Length)
+            if (currentFrame >= images.Length)
             {
                 currentFrame = 0;
             }
