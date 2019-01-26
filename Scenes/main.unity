@@ -6658,7 +6658,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_NormalBias: 1.96
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -10603,6 +10603,7 @@ GameObject:
   - component: {fileID: 1706550484}
   - component: {fileID: 1706550483}
   - component: {fileID: 1706550482}
+  - component: {fileID: 1706550487}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -10750,6 +10751,19 @@ Transform:
   m_Father: {fileID: 653199027}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706550487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706550480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2e83ad7bc64234e88a61dea562fba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  speedMult: 1.5
 --- !u!1001 &1727119604
 Prefab:
   m_ObjectHideFlags: 0
@@ -11597,6 +11611,7 @@ GameObject:
   - component: {fileID: 2068423710}
   - component: {fileID: 2068423714}
   - component: {fileID: 2068423713}
+  - component: {fileID: 2068423715}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11692,6 +11707,20 @@ MonoBehaviour:
   player: {fileID: 1706550486}
   distz: 30
   disty: 0
+--- !u!114 &2068423715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068423709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5276855cd7cf12c4e8609c791bfda4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 140f36b13cf500746bd6e5ef50307c16, type: 2}
+  shakeAmount: 0.05
+  drunk: 0
 --- !u!1 &2109824451
 GameObject:
   m_ObjectHideFlags: 0

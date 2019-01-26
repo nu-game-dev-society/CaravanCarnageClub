@@ -37,7 +37,7 @@ public class Drunk : MonoBehaviour {
             drunk = false;
         }
 
-        if (drunk)
+        /*if (drunk)
         {
             transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
 
@@ -48,7 +48,7 @@ public class Drunk : MonoBehaviour {
         else
         {
             transform.localPosition = originalPos;
-        }
+        }*/
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
