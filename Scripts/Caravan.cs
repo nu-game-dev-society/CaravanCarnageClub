@@ -30,13 +30,19 @@ public class Caravan : MonoBehaviour {
     {
         if (index > 0)
         {
-            transform.LookAt(playerManager.myCaravans[index - 1].nextSpawn.position);
-            transform.position = Vector3.MoveTowards(transform.position, playerManager.myCaravans[index - 1].nextSpawn.position, 2);
+            Vector3 target = playerManager.myCaravans[index - 1].nextSpawn.position;
+           // target.z = 0;
+ 
+            transform.LookAt(target);
+            transform.position = Vector3.MoveTowards(transform.position, playerManager.myCaravans[index - 1].nextSpawn.position, 5);
         }
         else
         {
-            transform.LookAt(playerManager.firstSpawn.position);
-            transform.position = Vector3.MoveTowards(transform.position, playerManager.firstSpawn.position, 2);
+            Vector3 target = playerManager.firstSpawn.position;
+            //target.z = 0;
+ 
+            transform.LookAt(target);
+            transform.position = Vector3.MoveTowards(transform.position, playerManager.firstSpawn.position, 5);
         }
     }
 
