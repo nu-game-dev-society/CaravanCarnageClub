@@ -5,7 +5,7 @@ using UnityStandardAssets.Vehicles.Car;
 
 public class EnemyCar : MonoBehaviour {
 
-    [SerializeField] Transform[] waypoints;
+    [SerializeField] GameObject[] waypoints;
     [SerializeField] CarAIControl AIControl;
     [SerializeField] GameObject Waypoint;
 
@@ -15,7 +15,8 @@ public class EnemyCar : MonoBehaviour {
     private void Start()
     {
         AIControl = gameObject.GetComponent<CarAIControl>();
-        target = waypoints[(Random.Range(0, waypoints.Length))];
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoints");
+        target = waypoints[(Random.Range(0, waypoints.Length))].transform;
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class EnemyCar : MonoBehaviour {
 
         if (distToTarget <= 5 || target == null)
         {
-            target = waypoints[(Random.Range(0, waypoints.Length))];
+            target = waypoints[(Random.Range(0, waypoints.Length))].transform;
         }
 
 
