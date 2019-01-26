@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
-    public List<Caravan> myCaravans = new List<Caravan>();
+    [SerializeField] GameObject[] Caravans;
+    public int caravansCollected;
 
-    public GameObject caravan;
-
-    public Transform firstSpawn;
-
+    public void Start()
+    {
+        
+    }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
-            CaravanCreationTest();
-    }
-
-
-    public void CaravanCreationTest()
-    {
-        GameObject newCaravan = Instantiate(caravan);
-        //newCaravan.transform.SetParent(transform);
-    }
-
-    //Adds a new caravan
-    public void AddCaravan(Caravan caravan)
-    {
-        myCaravans.Add(caravan);
-    }
-
-    public int CountCaravans()
-    {
-        return myCaravans.Count;
-    }
-
-    public void DestroyCaravan(int caravanIndex)
-    {
-        for (int i = caravanIndex; i < myCaravans.Count; i++)
         {
-            myCaravans[i].DestroyCaravan();
+            activateCaravan();
         }
     }
+
+    public void activateCaravan()
+    {
+        if (caravansCollected < Caravans.Length - 1)
+        {
+            Caravans[caravansCollected].GetComponent<MeshRenderer>().enabled = true;
+            Caravans[caravansCollected].GetComponent<Collider>().enabled = true;
+            caravansCollected += 1;
+        }
+    }
+
+    public void DestroyCaravans(int startIndex)
+    {
+        for (int i = startIndex; i < Caravans.Length; i++)
+        {
+
+            Caravans[i].GetComponent<MeshRenderer>().enabled = false;
+            Caravans[i].GetComponent<Collider>().enabled = false;
+            caravansCollected -= 1;
+            //TODO INSTANTIATE EXPLOSION AT POSITION!
+        }
+    }
+
+
+
+
+
 }
