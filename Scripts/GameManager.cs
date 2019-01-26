@@ -25,9 +25,7 @@ public class GameManager : MonoBehaviour {
     {
         if(timeLeft > 0)
             timeLeft -= Time.deltaTime;
-
-        int timeLeftInt = (int)Mathf.Round(timeLeft);
-        UIManager.Instance.UpdateTimer(timeLeftInt);
+        UIManager.Instance.UpdateTimer(timeLeft);
         if (timeLeft < 0)
             EndGame();
 	}

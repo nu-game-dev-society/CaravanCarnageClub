@@ -18,12 +18,16 @@ public class UIManager : MonoBehaviour
 #endregion
     [SerializeField]
     Text timer;
+    [SerializeField]
+    Image timeClock;
 
     [SerializeField] GameObject endScreen;
 
-    public void UpdateTimer(int time)
+    public void UpdateTimer(float time)
     {
-        timer.text = time.ToString() + " SECONDS";
+        int intTime = (int)Mathf.Round(time);
+        timer.text = intTime.ToString();
+        timeClock.fillAmount = time / 60;
     }
 
     public void EndScreen()
