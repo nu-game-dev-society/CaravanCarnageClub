@@ -10399,7 +10399,7 @@ GameObject:
   - component: {fileID: 546710257}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12458,13 +12458,13 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3ec8f6568fd078549a66b0f4c70f3586,
+      objectReference: {fileID: 21300000, guid: 5f3c12d9b196e194baa663eac30f11f0,
         type: 3}
     - target: {fileID: 114370102692295188, guid: 0d9eaae837b16644fac058c8b4090ba9,
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3ec8f6568fd078549a66b0f4c70f3586,
+      objectReference: {fileID: 21300000, guid: 5f3c12d9b196e194baa663eac30f11f0,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9eaae837b16644fac058c8b4090ba9, type: 2}
@@ -24946,7 +24946,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1758077157616946, guid: 614feee7412f671429299ccfbd50afd7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 614feee7412f671429299ccfbd50afd7, type: 2}
@@ -29096,7 +29096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 6d18411a4cfb9484a84f80a7a06d1f5a, type: 2}
+  profile: {fileID: 11400000, guid: 0ef10a1b9925bfe4ab58b73ade39be45, type: 2}
 --- !u!1 &2070040334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 185286, guid: 8ed1fa325ca228645ad26dd6eff14768,

@@ -6,7 +6,7 @@ public class DrunkPower : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.parent.tag == "Player")
+        if (other.transform.parent && other.transform.parent.parent && other.transform.parent.parent.tag == "Player")
         {
             Camera.main.GetComponent<Drunk>().drunk = true;
             Camera.main.GetComponent<Drunk>().AddDrunkTime(5);
