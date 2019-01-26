@@ -21,13 +21,41 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Image timeClock;
 
+    [SerializeField]bool paused;
+
     [SerializeField] GameObject endScreen;
+    [SerializeField] GameObject PauseScreen;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+                PauseGame();
+            else
+                UnpauseGame();
+        }
+    }
 
     public void UpdateTimer(float time)
     {
         int intTime = (int)Mathf.Round(time);
         timer.text = intTime.ToString();
         timeClock.fillAmount = time / 60;
+    }
+
+    void PauseGame()
+    {
+        PauseScreen.SetActive(true);
+        Time.timeScale = 0;
+        paused = true;
+    }
+
+    void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        PauseScreen.SetActive(false);
+        paused = false;
     }
 
     public void EndScreen()
@@ -39,5 +67,10 @@ public class UIManager : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
