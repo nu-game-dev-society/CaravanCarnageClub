@@ -1,8 +1,19 @@
 fileFormatVersion: 2
-guid: 595a62040c90ae74cbcdb0a60f216837
+guid: 7c5aafe3fe2c6ef4a9150f7f44653760
+labels:
+- dead
+- plant
+- pack
+- low-poly
+- set
+- lowpoly
+- tree
+- wood
+- art
+- free
+timeCreated: 1457642339
+licenseType: Store
 NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
