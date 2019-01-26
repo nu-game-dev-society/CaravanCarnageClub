@@ -8,10 +8,20 @@ public class PlayerManager : MonoBehaviour {
 
     public GameObject caravan;
 
+    public Transform firstSpawn;
+
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+            CaravanCreationTest();
+    }
+
 
     public void CaravanCreationTest()
     {
-        Instantiate(caravan);
+        GameObject newCaravan = Instantiate(caravan);
+        //newCaravan.transform.SetParent(transform);
     }
 
     //Adds a new caravan
