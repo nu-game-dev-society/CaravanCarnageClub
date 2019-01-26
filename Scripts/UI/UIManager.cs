@@ -20,7 +20,8 @@ public class UIManager : MonoBehaviour
     Text timer;
     [SerializeField]
     Image timeClock;
-
+    [SerializeField]
+    Text score;
     [SerializeField]bool paused;
 
     [SerializeField] GameObject endScreen;
@@ -43,7 +44,13 @@ public class UIManager : MonoBehaviour
         timer.text = intTime.ToString();
         timeClock.fillAmount = time / 60;
     }
+    public void UpdateScore(int score)
+    {
+        string scoreS = score.ToString().PadLeft(8, '0');
 
+        this.score.text = scoreS;
+        
+    }
     void PauseGame()
     {
         PauseScreen.SetActive(true);

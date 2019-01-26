@@ -15,9 +15,6 @@ public class Caravan : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-
-        Debug.Log(collision.gameObject.tag);
-
         if (collision.gameObject.tag == "Destroyable" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
         {
             playerManager.DestroyCaravans(index);
