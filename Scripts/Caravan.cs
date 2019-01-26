@@ -6,7 +6,7 @@ public class Caravan : MonoBehaviour {
 
     PlayerManager playerManager;
     GameObject player;
-    HingeJoint myHinge;
+    //HingeJoint myHinge;
     Rigidbody myRigidbody;
 
     public Transform nextSpawn;
@@ -20,31 +20,45 @@ public class Caravan : MonoBehaviour {
         playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
         //player = GameObject.FindGameObjectWithTag("Player");
         playerManager.AddCaravan(this);
-        myHinge = gameObject.GetComponent<HingeJoint>();
+       // myHinge = gameObject.GetComponent <HingeJoint>();
         index = playerManager.CountCaravans() - 1;
         gameObject.name = "Caravan" + index;
-        SetUpHinge();
+       // SetUpHinge();
 	}
 
-    public Rigidbody GetRigidbody()
+    private void Update()
     {
+        if (index > 0)
+        {
+            transform.LookAt(playerManager.myCaravans[index - 1].nextSpawn.position);
+            transform.position = Vector3.MoveTowards(transform.position, playerManager.myCaravans[index - 1].nextSpawn.position, 2);
+        }
+        else
+        {
+            transform.LookAt(playerManager.firstSpawn.position);
+            transform.position = Vector3.MoveTowards(transform.position, playerManager.firstSpawn.position, 2);
+        }
+    }
+
+    public Rigidbody GetRigidbody()
+    {   
         return myRigidbody;
     }
 
-    void SetUpHinge()
+   void SetUpHinge()
     {
 
         if (index > 0)
         {
             transform.position = playerManager.myCaravans[index - 1].nextSpawn.position;
             transform.rotation = playerManager.myCaravans[index - 1].nextSpawn.rotation;
-            myHinge.connectedBody = playerManager.myCaravans[index - 1].GetRigidbody();
+           // myHinge.connectedBody = playerManager.myCaravans[index - 1].GetRigidbody();
         }
         else
         {
             transform.position = playerManager.firstSpawn.position;
             transform.rotation = playerManager.firstSpawn.rotation;
-            myHinge.connectedBody = playerManager.gameObject.GetComponent<Rigidbody>();
+           // myHinge.connectedBody = playerManager.gameObject.GetComponent<Rigidbody>();
         }
     }
 	
