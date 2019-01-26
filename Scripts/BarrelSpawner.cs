@@ -25,7 +25,6 @@ public class BarrelSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SpawnBarrels();
 	}
 	
 	// Update is called once per frame
@@ -50,17 +49,14 @@ public class BarrelSpawner : MonoBehaviour {
             Vector3 pos = new Vector3(Random.Range(minArea.x, maxArea.x), Random.Range(minArea.y, maxArea.y), Random.Range(minArea.z, maxArea.z));
 
             RaycastHit hit;
-            if (Physics.BoxCast(pos, barrel.transform.localScale, Vector3.down, out hit, Quaternion.identity, Mathf.Infinity))
+            if (Physics.Raycast(pos, Vector3.down, out hit, Mathf.Infinity))
             {
-                if (hit.transform.tag == "Terrain")
-                {
-                    GameObject tmpBarrel = GameObject.Instantiate(barrel);
-                    tmpBarrel.transform.SetParent(transform);
-                    tmpBarrel.transform.position = hit.point;
-
-                    barrelCount++;
-                }
+                GameObject tmpBarrel = GameObject.Instantiate(barrel);
+                tmpBarrel.transform.SetParent(transform);
+                tmpBarrel.transform.position = hit.point;
             }
+
+            barrelCount++;
         }
     }
 

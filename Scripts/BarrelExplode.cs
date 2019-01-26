@@ -6,7 +6,7 @@ public class BarrelExplode : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag != "Terrain")
+        if (other.transform.parent && other.transform.parent.parent && other.transform.parent.parent.tag == "Player")
         {
             //Explode
             Destroy(gameObject);

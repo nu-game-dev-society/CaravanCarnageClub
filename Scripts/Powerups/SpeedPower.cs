@@ -6,7 +6,7 @@ public class SpeedPower : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.parent.tag == "Player")
+        if (other.transform.parent && other.transform.parent.parent && other.transform.parent.parent.tag == "Player")
         {
             other.transform.parent.parent.GetComponent<CarSpeedControl>().AddSpeedTime(5);
             Destroy(gameObject);

@@ -11594,7 +11594,7 @@ Prefab:
     - target: {fileID: 114920661416412838, guid: 59abcc4e25ac8524699abbcf75067f7b,
         type: 2}
       propertyPath: maxBarrels
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59abcc4e25ac8524699abbcf75067f7b, type: 2}
