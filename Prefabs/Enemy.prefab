@@ -409,6 +409,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4981720111508304}
+  - component: {fileID: 114731153133876464}
+  - component: {fileID: 195487470186707304}
   m_Layer: 0
   m_Name: WaypointTargetObject
   m_TagString: Untagged
@@ -616,7 +618,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898353276672912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.17}
+  m_LocalPosition: {x: 16.56, y: 0, z: -6.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4981720111508304}
@@ -1744,7 +1746,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: -0.5, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023841858, y: -0.741, z: -3.6099968}
+  m_ConnectedAnchor: {x: 0, y: -0.741, z: -3.6099968}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -2328,23 +2330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75469f42c8ce1e84bbf6c6eaf4a9f16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  AIControl: {fileID: 0}
   Waypoint: {fileID: 1811304748509082}
   myCaravan: {fileID: 1976147898046298}
+  wpPf: {fileID: 114731153133876464}
 --- !u!114 &114429927098675470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2450,6 +2438,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
   skidParticles: {fileID: 0}
+--- !u!114 &114731153133876464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811304748509082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be194668aeadb2488a35a7fd71f68b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  myTransform: {fileID: 4981720111508304}
+  target: {fileID: 0}
+  distToTarget: 0
+  myCar: {fileID: 4932372277932546}
+  pathfinder: {fileID: 195487470186707304}
 --- !u!114 &114735636470091114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2616,6 +2621,27 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!195 &195487470186707304
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811304748509082}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 6
+  m_Speed: 15
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198947450877339006
 ParticleSystem:
   m_ObjectHideFlags: 1
