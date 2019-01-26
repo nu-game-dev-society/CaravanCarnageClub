@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] GameObject[] Caravans;
     public int caravansCollected;
 
+    [SerializeField] GameObject explosionEffect;
+
     public void Start()
     {
         
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour {
             {
                 Caravans[i].GetComponent<MeshRenderer>().enabled = false;
                 Caravans[i].GetComponent<Collider>().enabled = false;
+                Instantiate(explosionEffect, Caravans[i].transform.position, Quaternion.identity);
                 caravansCollected -= 1;
             }
             //TODO INSTANTIATE EXPLOSION AT POSITION!
@@ -50,6 +53,7 @@ public class PlayerManager : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            Instantiate(explosionEffect, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             activateCaravan();
         }
