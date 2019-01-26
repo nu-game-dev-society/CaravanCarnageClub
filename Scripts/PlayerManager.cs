@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour {
         if(collision.gameObject.tag == "Enemy")
         {
             Instantiate(explosionEffect, collision.transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyCar>().Boom();
             activateCaravan();
             gameManager.timeLeft += 10;
         }

@@ -8,6 +8,7 @@ public class EnemyCar : MonoBehaviour {
     [SerializeField] GameObject[] waypoints;
     [SerializeField] CarAIControl AIControl;
     [SerializeField] GameObject Waypoint;
+    [SerializeField] GameObject myCaravan;
 
     Transform target;
     float distToTarget;
@@ -38,4 +39,10 @@ public class EnemyCar : MonoBehaviour {
 
 
 	}
+
+    public void Boom()
+    {
+        Destroy(myCaravan);
+        Destroy(gameObject);
+    }
 }

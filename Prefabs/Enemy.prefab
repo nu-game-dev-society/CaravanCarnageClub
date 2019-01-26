@@ -2344,6 +2344,7 @@ MonoBehaviour:
   - {fileID: 0}
   AIControl: {fileID: 0}
   Waypoint: {fileID: 1811304748509082}
+  myCaravan: {fileID: 1976147898046298}
 --- !u!114 &114429927098675470
 MonoBehaviour:
   m_ObjectHideFlags: 1
