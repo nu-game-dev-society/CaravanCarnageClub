@@ -11,9 +11,12 @@ public class CarSpeedControl : MonoBehaviour {
 
     float initSpeed;
 
+    UnityStandardAssets.Vehicles.Car.CarController car;
+
 	// Use this for initialization
 	void Start () {
-		//initSpeed = GetComponent<UnityStandardAssets.Vehicles.Car.CarController>().;
+        car = GetComponent<UnityStandardAssets.Vehicles.Car.CarController>();
+		initSpeed = car.m_Topspeed;
 	}
 	
 	// Update is called once per frame
@@ -26,11 +29,11 @@ public class CarSpeedControl : MonoBehaviour {
 
         if (speed)
         {
-            //initSpeed * speedMult;
+            car.m_Topspeed = initSpeed * speedMult;
         }
         else
         {
-            //initSpeed;
+            car.m_Topspeed = initSpeed;
         }
 	}
 
