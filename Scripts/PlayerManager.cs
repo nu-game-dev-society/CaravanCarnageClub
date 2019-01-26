@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour {
 
     [SerializeField] GameObject explosionEffect;
 
+    [SerializeField] GameManager gameManager;
+
     public void Start()
     {
         
@@ -56,6 +58,7 @@ public class PlayerManager : MonoBehaviour {
             Instantiate(explosionEffect, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             activateCaravan();
+            gameManager.timeLeft += 10;
         }
     }
 

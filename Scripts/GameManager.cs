@@ -11,12 +11,20 @@ public class GameManager : MonoBehaviour {
             Instance = this;
     }
     #endregion
-    public float timeLeft = 20;
+    public float timeLeft = 2;
     public int score = 0;
 
-	void Update ()
+    [SerializeField] UIManager uiManager;
+
+    private void Start()
     {
-        timeLeft -= Time.deltaTime;
+        Time.timeScale = 1;
+    }
+
+    void Update ()
+    {
+        if(timeLeft > 0)
+            timeLeft -= Time.deltaTime;
 
         int timeLeftInt = (int)Mathf.Round(timeLeft);
         UIManager.Instance.UpdateTimer(timeLeftInt);
@@ -25,6 +33,8 @@ public class GameManager : MonoBehaviour {
 	}
     void EndGame()
     {
+        Time.timeScale = 0;
+        uiManager.EndScreen();
         print("LOSER");
     }
 }

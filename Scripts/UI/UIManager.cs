@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,8 +18,22 @@ public class UIManager : MonoBehaviour
 #endregion
     [SerializeField]
     Text timer;
+
+    [SerializeField] GameObject endScreen;
+
     public void UpdateTimer(int time)
     {
-        timer.text = time.ToString();
+        timer.text = time.ToString() + " SECONDS";
+    }
+
+    public void EndScreen()
+    {
+        endScreen.SetActive(true);
+    }
+
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("main");
     }
 }
