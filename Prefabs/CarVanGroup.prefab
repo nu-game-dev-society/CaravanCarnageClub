@@ -280,7 +280,7 @@ GameObject:
   m_IsActive: 0
 --- !u!1 &1459265907154970
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -452,10 +452,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4303502152782082}
-  - component: {fileID: 114278323647524638}
   m_Layer: 0
   m_Name: CarVanGroup
-  m_TagString: PlayerManager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,9 +471,10 @@ GameObject:
   - component: {fileID: 114840839832028674}
   - component: {fileID: 114050003121621998}
   - component: {fileID: 114117731533996418}
+  - component: {fileID: 114295145180396504}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Player
+  m_TagString: PlayerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,7 +699,6 @@ Transform:
   m_LocalPosition: {x: 5.2702136, y: 15.48, z: -24.037642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4957007219198274}
   - {fileID: 4976788134590842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1001,11 +1000,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459265907154970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.932219, y: -15.425591, z: 3.71}
+  m_LocalPosition: {x: -0, y: 1.3155918, z: -6.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4303502152782082}
-  m_RootOrder: 0
+  m_Father: {fileID: 4976788134590842}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4976788134590842
 Transform:
@@ -1023,8 +1022,9 @@ Transform:
   - {fileID: 4299042253789194}
   - {fileID: 4311020918444252}
   - {fileID: 4512168607273600}
+  - {fileID: 4957007219198274}
   m_Father: {fileID: 4303502152782082}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23120645986084900
 MeshRenderer:
@@ -2234,12 +2234,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
   skidParticles: {fileID: 0}
---- !u!114 &114278323647524638
+--- !u!114 &114295145180396504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1851660523724666}
+  m_GameObject: {fileID: 1853585698842162}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfaaa884b58144d4aab907a00a2dfcb2, type: 3}
