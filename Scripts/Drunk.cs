@@ -18,10 +18,15 @@ public class Drunk : MonoBehaviour {
 
     public bool drunk = false;
     float drunkTime = 0;
+    UnityStandardAssets.Vehicles.Car.CarUserControl carControl;
 
     void Awake()
     {
         originalFov = Camera.main.fieldOfView;
+    }
+    private void Start()
+    {
+        carControl = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Vehicles.Car.CarUserControl>();
     }
 
     void OnEnable()
@@ -35,6 +40,7 @@ public class Drunk : MonoBehaviour {
         if (drunkTime < 0)
         {
             drunk = false;
+            carControl.inverse = 1;
         }
 
         /*if (drunk)
@@ -73,5 +79,6 @@ public class Drunk : MonoBehaviour {
         {
             drunkTime += time;
         }
+        carControl.inverse = -1;
     }
 }
