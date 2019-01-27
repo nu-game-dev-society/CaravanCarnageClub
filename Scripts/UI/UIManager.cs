@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
     public void EndScreen()
     {
         endScreen.SetActive(true);
-        submitButton.interactable = true;
+        //submitButton.interactable = true;
         OpenScoreboard();
     }
 
@@ -95,8 +95,8 @@ public class UIManager : MonoBehaviour
     {
         if (scoreSubmitName.text != "")
         {
-            ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
             submitButton.interactable = false;
+            ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
         }
         OpenScoreboard();
     }
