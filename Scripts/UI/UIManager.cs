@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
             else
                 UnpauseGame();
         }
+        OpenScoreboard();
     }
 
     public void UpdateTimer(float time)
@@ -69,6 +70,7 @@ public class UIManager : MonoBehaviour
     public void EndScreen()
     {
         endScreen.SetActive(true);
+        submitButton.interactable = true;
         OpenScoreboard();
     }
 
@@ -88,13 +90,15 @@ public class UIManager : MonoBehaviour
     Text[] scoreFields;
     [SerializeField]
     InputField scoreSubmitName;
-
+    [SerializeField]
+    Button submitButton;
     public void SendScore()
     {
         if (scoreSubmitName.text != "")
         {
             ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
-            EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
+            OpenScoreboard();
+            submitButton.interactable = false;
         }
     }
 
