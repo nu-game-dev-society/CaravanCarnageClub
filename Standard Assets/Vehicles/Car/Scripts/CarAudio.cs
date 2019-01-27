@@ -85,7 +85,8 @@ namespace UnityStandardAssets.Vehicles.Car
 
         // Update is called once per frame
         private void Update()
-        {
+        { 
+
             // get the distance to main camera
             float camDist = (Camera.main.transform.position - transform.position).sqrMagnitude;
 
@@ -103,6 +104,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             if (m_StartedSound)
             {
+
                 // The pitch is interpolated between the min and max values, according to the car's revs.
                 float pitch = ULerp(lowPitchMin, lowPitchMax, m_CarController.Revs);
 
@@ -114,7 +116,7 @@ namespace UnityStandardAssets.Vehicles.Car
                     // for 1 channel engine sound, it's oh so simple:
                     m_HighAccel.pitch = pitch*pitchMultiplier*highPitchMultiplier;
                     m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-                    m_HighAccel.volume = 1;
+                    m_HighAccel.volume = 0.5f;
                 }
                 else
                 {
@@ -145,6 +147,11 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_LowDecel.volume = lowFade*decFade;
                     m_HighAccel.volume = highFade*accFade;
                     m_HighDecel.volume = highFade*decFade;
+
+                    m_LowAccel.volume *= 0.6f;
+                    m_LowDecel.volume *= 0.6f;
+                    m_HighAccel.volume *= 0.6f;
+                    m_HighDecel.volume *= 0.6f;
 
                     // adjust the doppler levels
                     m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
