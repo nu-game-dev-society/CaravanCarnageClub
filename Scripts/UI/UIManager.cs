@@ -37,7 +37,6 @@ public class UIManager : MonoBehaviour
             else
                 UnpauseGame();
         }
-        OpenScoreboard();
     }
 
     public void UpdateTimer(float time)
@@ -97,9 +96,9 @@ public class UIManager : MonoBehaviour
         if (scoreSubmitName.text != "")
         {
             ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
-            OpenScoreboard();
             submitButton.interactable = false;
         }
+        OpenScoreboard();
     }
 
     public void OpenScoreboard()
