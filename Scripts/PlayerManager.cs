@@ -11,11 +11,6 @@ public class PlayerManager : MonoBehaviour {
 
     [SerializeField] GameManager gameManager;
 
-    public void Start()
-    {
-        
-    }
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
@@ -58,7 +53,10 @@ public class PlayerManager : MonoBehaviour {
             Instantiate(explosionEffect, collision.transform.position, Quaternion.identity);
             collision.gameObject.GetComponent<EnemyCar>().Boom();
             activateCaravan();
-            gameManager.timeLeft += 10;
+            if (gameManager.timeLeft <= 50)
+                gameManager.timeLeft += 10;
+            else
+                gameManager.timeLeft = 60;
         }
     }
 

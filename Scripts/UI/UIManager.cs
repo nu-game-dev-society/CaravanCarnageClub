@@ -79,9 +79,9 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("main");
     }
 
-    public void QuitGame()
+    public void ReturnToMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene("mainMenu");
     }
 
     #region score

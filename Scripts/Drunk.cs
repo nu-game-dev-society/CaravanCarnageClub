@@ -12,26 +12,14 @@ public class Drunk : MonoBehaviour {
     //Pulsate FOV Clamp (+/-)
     public const float FOV_DELTA = 5f;
 
-    //Backup
-    Vector3 originalPos;
-    float originalFov;
 
     public bool drunk = false;
     float drunkTime = 0;
     UnityStandardAssets.Vehicles.Car.CarUserControl carControl;
 
-    void Awake()
-    {
-        originalFov = Camera.main.fieldOfView;
-    }
     private void Start()
     {
         carControl = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Vehicles.Car.CarUserControl>();
-    }
-
-    void OnEnable()
-    {
-        originalPos = transform.localPosition;
     }
 
     void Update()
