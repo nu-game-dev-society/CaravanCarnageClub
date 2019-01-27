@@ -31985,7 +31985,7 @@ Prefab:
     - target: {fileID: 114001346755503460, guid: df109f6c527f8fe4db9ee1179fc98cff,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
+      value: ReturnToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 114001346755503460, guid: df109f6c527f8fe4db9ee1179fc98cff,
         type: 2}
@@ -32016,6 +32016,15 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493289716137850, guid: df109f6c527f8fe4db9ee1179fc98cff,
+        type: 2}
+      propertyPath: m_Text
+      value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229794065833378, guid: df109f6c527f8fe4db9ee1179fc98cff, type: 2}
+      propertyPath: m_Name
+      value: Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df109f6c527f8fe4db9ee1179fc98cff, type: 2}
