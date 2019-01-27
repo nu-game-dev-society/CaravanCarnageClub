@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class UIManager : MonoBehaviour
     public void EndScreen()
     {
         endScreen.SetActive(true);
+        OpenScoreboard();
     }
 
 
@@ -80,4 +82,28 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    #region score
+    [SerializeField]
+    Text[] scoreFields;
+    [SerializeField]
+    InputField scoreSubmitName;
+
+    public void SendScore()
+    {
+        if (scoreSubmitName.text != "")
+        {
+            ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
+            EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void OpenScoreboard()
+    {
+        //Application.OpenURL("http://81.174.149.122/ggj/");
+        Score[] scores = ScoreWeb.Get();
+        for (int i = 0; i < scoreFields.Length; i++)
+            scoreFields[i].text = scores[i].name + " : " + scores[i].score;
+    }
+    #endregion
 }
