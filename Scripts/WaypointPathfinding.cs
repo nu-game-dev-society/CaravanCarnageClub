@@ -21,13 +21,14 @@ public class WaypointPathfinding : MonoBehaviour {
         pathfinder = gameObject.GetComponent<NavMeshAgent>();
         waypoints = GameObject.FindGameObjectsWithTag("Waypoints");
         target = waypoints[(Random.Range(0, waypoints.Length))].transform;
-        UpdatePath();
+        //UpdatePath();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        pathfinder.SetDestination(target.position);
+        //pathfinder.SetDestination(target.position);
 
+        transform.position = target.position;
         
 
         if (target != null)
