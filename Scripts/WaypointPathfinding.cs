@@ -45,7 +45,7 @@ public class WaypointPathfinding : MonoBehaviour {
 
     IEnumerator UpdatePath()
     {
-        float refreshRate = .05f;
+        float refreshRate = 5f;
 
         while (target != null)
         {
