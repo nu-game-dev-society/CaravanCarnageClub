@@ -27,7 +27,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject endScreen;
     [SerializeField] GameObject PauseScreen;
-
+    Color start;
+    void Start()
+    {
+        start = timeClock.color;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -81,7 +85,18 @@ public class UIManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("mainMenu");
+    }
+    public void FlashTimer(Color c)
+    {
+        timeClock.color = c;
+        StartCoroutine(FlashColor());
+    }
+    IEnumerator FlashColor()
+    {
+        yield return new WaitForSeconds(0.6f);
+        timeClock.color = start;
     }
 
     #region score

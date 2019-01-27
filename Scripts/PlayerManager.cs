@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour {
             Caravans[caravansCollected].GetComponent<MeshRenderer>().enabled = true;
             Caravans[caravansCollected].GetComponent<Collider>().enabled = true;
             caravansCollected += 1;
+            UIManager.Instance.FlashTimer(Color.green);
         }
     }
 
@@ -41,6 +42,9 @@ public class PlayerManager : MonoBehaviour {
                 Caravans[i].GetComponent<Collider>().enabled = false;
                 Instantiate(explosionEffect, Caravans[i].transform.position, Quaternion.identity);
                 caravansCollected -= 1;
+
+                GameManager.Instance.timeLeft -= 2;
+                UIManager.Instance.FlashTimer(Color.red);
             }
             //TODO INSTANTIATE EXPLOSION AT POSITION!
         }

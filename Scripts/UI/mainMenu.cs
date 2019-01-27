@@ -7,6 +7,11 @@ public class mainMenu : MonoBehaviour {
 
     [SerializeField] GameObject credits;
 
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     public void OpenCredits()
     {
         credits.SetActive(true);
