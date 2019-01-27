@@ -107,7 +107,12 @@ public class UIManager : MonoBehaviour
         //Application.OpenURL("http://81.174.149.122/ggj/");
         Score[] scores = ScoreWeb.Get();
         for (int i = 0; i < scoreFields.Length; i++)
-            scoreFields[i].text = scores[i].name + " : " + scores[i].score;
+        {
+            if (i >= scores.Length)
+                scoreFields[i].text = "";
+            else
+                scoreFields[i].text = scores[i].name + " : " + scores[i].score;        
+        }
     }
     #endregion
 }
