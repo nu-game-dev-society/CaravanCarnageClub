@@ -58,7 +58,7 @@ public class DiscordManager : MonoBehaviour {
             case "main":
                 presence.details = "In singleplayer\n";
 
-                presence.state = "Collected " + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().caravansCollected + "/10 caravans";
+                presence.state = "Score: " + ((int)Mathf.RoundToInt(GameManager.Instance.score)).ToString().PadLeft(8, '0');
 
                 long epoch = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
 
