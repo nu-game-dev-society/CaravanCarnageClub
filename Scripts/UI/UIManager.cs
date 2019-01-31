@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
     Button submitButton;
     public void SendScore()
     {
-        if (scoreSubmitName.text != "")
+        if (scoreSubmitName.text != "" && scoreSubmitName.text.Length <= 10)
         {
             submitButton.interactable = false;
             ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
@@ -118,7 +118,6 @@ public class UIManager : MonoBehaviour
 
     public void OpenScoreboard()
     {
-        //Application.OpenURL("http://81.174.149.122/ggj/");
         Score[] scores = ScoreWeb.Get();
         for (int i = 0; i < scoreFields.Length; i++)
         {
