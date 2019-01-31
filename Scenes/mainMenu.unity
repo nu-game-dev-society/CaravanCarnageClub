@@ -238,6 +238,48 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0ddb82da3485fac4dbfe187acb70a610, type: 3}
+--- !u!1001 &12507251
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 15.793612
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 25.181747
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -32.33681
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911601778765650, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9876d0cf3da16b04eac748137b4953a4, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &13500293
 Prefab:
   m_ObjectHideFlags: 0
@@ -32674,9 +32716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea423db0c8e7c7478458df2fa377d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1706550486}
-  maxDist: 0
-  camSpeed: 20
 --- !u!114 &2068423714
 MonoBehaviour:
   m_ObjectHideFlags: 0

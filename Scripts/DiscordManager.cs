@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class DiscordManager : MonoBehaviour {
     private string steamId = "";
     private DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence();
     private DiscordRpc.EventHandlers handlers;
+
+    private bool connected = false;
 
     void OnEnable () {
         handlers = new DiscordRpc.EventHandlers();
@@ -23,16 +26,49 @@ public class DiscordManager : MonoBehaviour {
         DiscordRpc.Shutdown();
     }
 
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Update()
     {
+        UpdatePresence();
         DiscordRpc.RunCallbacks();
     }
 
     public void ReadyCallback(ref DiscordRpc.DiscordUser connectedUser)
     {
+        connected = true;
+
         Debug.Log(string.Format("Discord: connected to {0}#{1}: {2}", connectedUser.username, connectedUser.discriminator, connectedUser.userId));
 
-        presence.details = "Shit happens?";
+        UpdatePresence();
+    }
+
+    private void UpdatePresence()
+    {
+        if (!connected) { return; }
+
+        switch (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
+        {
+            case "mainMenu":
+                presence.details = "At the main menu";
+                break;
+            case "main":
+                presence.details = "In singleplayer\n";
+
+                presence.state = "Collected " + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().caravansCollected + "/10 caravans";
+
+                long epoch = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+
+                presence.endTimestamp = epoch + (long)(GameManager.Instance.timeLeft * 1000);
+                break;
+            default:
+                presence.details = "";
+                break;
+        }
+
         presence.largeImageKey = "logo";
         DiscordRpc.UpdatePresence(presence);
     }
