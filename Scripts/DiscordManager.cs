@@ -22,6 +22,7 @@ public class DiscordManager : MonoBehaviour {
 
     void OnDisable()
     {
+        DiscordRpc.ClearPresence();
         DiscordRpc.Shutdown();
     }
 
