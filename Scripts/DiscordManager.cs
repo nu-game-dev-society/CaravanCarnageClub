@@ -22,7 +22,6 @@ public class DiscordManager : MonoBehaviour {
 
     void OnDisable()
     {
-        Debug.Log("Discord: shutdown");
         DiscordRpc.Shutdown();
     }
 
