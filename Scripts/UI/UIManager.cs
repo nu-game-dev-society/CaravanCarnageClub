@@ -108,12 +108,23 @@ public class UIManager : MonoBehaviour
     Button submitButton;
     public void SendScore()
     {
-        if (scoreSubmitName.text != "" && scoreSubmitName.text.Length <= 10)
+        if (scoreSubmitName.text != "" && scoreSubmitName.text.Length <= 3)
         {
             submitButton.interactable = false;
             ScoreWeb.Send(scoreSubmitName.text, (int)GameManager.Instance.score);
         }
         OpenScoreboard();
+    }
+    public void CheckName()
+    {
+        if (scoreSubmitName.text.Length > 3)
+        {
+            scoreSubmitName.text = scoreSubmitName.text.Substring(0, 3);
+        }
+
+        scoreSubmitName.text = System.Text.RegularExpressions.Regex.Replace(scoreSubmitName.text, "[0-9]", "");
+
+        scoreSubmitName.text = scoreSubmitName.text.ToUpper();
     }
 
     public void OpenScoreboard()
