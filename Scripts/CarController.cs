@@ -8,73 +8,64 @@ public class CarController : MonoBehaviour {
 
     [SerializeField] Rigidbody m_rigidbody;
 
-    int currentSpeed;
-    int maxSpeed;
-    int acceleration;
 
-    [SerializeField] Transform frontWheels;
-    
+    public float m_acceleration;
+    public float m_currentSpeed;
+    public float m_maxSpeed;
+    public float m_TurnSpeed;
 
-	// Use this for initialization
-	void Start ()
+
+    Rigidbody m_Rigidbody;
+
+    // Use this for initialization
+    void Start ()
     {
-        m_rigidbody = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        m_Rigidbody = GetComponent<Rigidbody>();
+    }
+
+
+
+
+    void FixedUpdate()
     {
-       DirectionOfWheels();
 
+        float v = Input.GetAxis("Vertical");
+        Vector3 _move = (v * transform.forward);
+        Move(_move * m_currentSpeed);
 
- 
-
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        if (v != 0)
         {
-            Vector3 currentDir = frontWheels.eulerAngles;
-            Vector3 dir = new Vector3(0, Input.GetAxisRaw("Horizontal"), 0);
-
-          
-            if (currentDir.y > 340 || currentDir.y < 20)
-            {
-                frontWheels.Rotate(dir);
-                Quaternion wheelEulerAngles = frontWheels.localRotation;
-                frontWheels.localRotation = wheelEulerAngles;
-            }
-            else if (currentDir.y <= 340 && dir.y > 0 && currentDir.y >40)
-            {
-                frontWheels.Rotate(dir);
-                Quaternion wheelEulerAngles = frontWheels.localRotation;
-                frontWheels.localRotation = wheelEulerAngles;
-            }
-            else if (currentDir.y >= 20 && dir.y < 0 && currentDir.y < 320)
-            {
-                frontWheels.Rotate(dir);
-                Quaternion wheelEulerAngles = frontWheels.localRotation;
-                frontWheels.localRotation = wheelEulerAngles;
-            }
-
-            
-
-
+            m_currentSpeed = Mathf.Lerp(m_currentSpeed, m_maxSpeed, 0.2f * Time.fixedDeltaTime);
+            Rotate();
         }
+
+
+       
     }
 
-
-
-
-    Vector3 DirectionOfWheels()
+    public void Move(Vector3 move)
     {
-        Vector3 dir = new Vector3();
-
-        Vector3 wheelDir1 = frontWheels.right;
-
-
-        dir = wheelDir1;
-
-        Debug.DrawRay(transform.position, dir * 10, Color.red);
-
-        return dir;
+        m_Rigidbody.AddForce(move * Time.fixedDeltaTime);
     }
+
+
+
+    public void Rotate()
+    {
+
+        float tiltAroundY = Input.GetAxis("Horizontal") * m_TurnSpeed;
+
+        Vector3 targetRotation = new Vector3(0, 0, 0);
+
+        if (Input.GetAxis("Horizontal") != 0)
+            targetRotation = new Vector3(0, tiltAroundY, 0);
+
+
+
+        //transform.Rotate(0, tiltAroundY, 0);
+        Quaternion deltaRotation = Quaternion.Euler(targetRotation);
+        m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
+    }
+
 
 }
