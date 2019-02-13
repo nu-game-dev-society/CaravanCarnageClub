@@ -20,6 +20,7 @@ public class CarController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        m_TurnSpeed = 0;
         m_Rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -30,17 +31,27 @@ public class CarController : MonoBehaviour {
     {
 
         float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
         Vector3 _move = (v * transform.forward);
         Move(_move * m_currentSpeed);
 
-        if (v != 0)
+        if (m_Rigidbody.velocity != new Vector3(0,0,0))
         {
             m_currentSpeed = Mathf.Lerp(m_currentSpeed, m_maxSpeed, 0.2f * Time.fixedDeltaTime);
+            m_TurnSpeed = m_currentSpeed / 1000;
             Rotate();
         }
 
+        if (h == 0)
+        {
+            m_currentSpeed = Mathf.Lerp(m_currentSpeed, 1000f, 0.2f * Time.fixedDeltaTime);
+        }
 
-       
+
+      
+
+        Debug.Log(m_TurnSpeed);
+
     }
 
     public void Move(Vector3 move)
