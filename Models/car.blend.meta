@@ -1,64 +1,10 @@
 fileFormatVersion: 2
-guid: 5b75a9afa8c2da1478fcc67f83894ff1
+guid: d191181076ddc07448b035e088b9f8c3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: default
-    400000: //RootNode
-    400002: default
-    2100000: Material.001
-    2100002: Material.005
-    2100004: Material.006
-    2100006: Material.003
-    2100008: Material
-    2100010: Material.002
-    2100012: Material.004
-    2100014: Material.007
-    2300000: default
-    3300000: default
-    4300000: default
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 4efb22fca3403e74886c9fb6c4a2d9ba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: e11e16aad6f90bd4aa755b5486106b11, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: b9f0fb484a4f36542b91586dadcfab51, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: 395258c15c5421a46b8a981b0b7333f0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: f38ab6b670fa25349a21ba6145f704f0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: c16f9c87ecd45124fb6858b470d11228, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.006
-    second: {fileID: 2100000, guid: 5dd1c4036e6e5c34387c5e89ac6e7d60, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.007
-    second: {fileID: 2100000, guid: 425bedbcefb6bb7469120026b13e94a7, type: 2}
+    2186277476908879412: ImportLogs
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -135,7 +81,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
