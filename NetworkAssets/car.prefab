@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4736529858294362}
   - component: {fileID: 54627380485316686}
   - component: {fileID: 65146140594913006}
-  - component: {fileID: 114132838997388478}
+  - component: {fileID: 114040907093526380}
   - component: {fileID: 114240580398291952}
   - component: {fileID: 114936360964303066}
   m_Layer: 0
@@ -163,7 +163,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.79591, y: 4.366167, z: 5.7233276}
   m_Center: {x: 0.17185788, y: 2.23, z: 0}
---- !u!114 &114132838997388478
+--- !u!114 &114040907093526380
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1194446048405848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ef3f5eb81c6da44834c96ce9ad701b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3842c74deaa048349a3d9dcd230ed4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 0}
@@ -191,14 +191,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.1
+  m_SendInterval: 0.09090909
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 1
+  m_InterpolateRotation: 2
   m_InterpolateMovement: 1
 --- !u!114 &114936360964303066
 MonoBehaviour:
