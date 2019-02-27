@@ -16,12 +16,27 @@ public class CarController : MonoBehaviour {
 
 
     Rigidbody m_Rigidbody;
+    Transform m_Transform;
 
     // Use this for initialization
     void Start ()
     {
         m_TurnSpeed = 0;
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_Transform = GetComponent<Transform>();
+    }
+
+
+    bool IsGrounded()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(m_Transform.position, -m_Transform.up, out hit))
+        {
+            if (hit.transform.CompareTag("Floor"))
+                return true;
+        }
+        return false;
     }
 
 
@@ -30,27 +45,28 @@ public class CarController : MonoBehaviour {
     void FixedUpdate()
     {
 
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-        Vector3 _move = (v * transform.forward);
-        Move(_move * m_currentSpeed);
-
-        if (m_Rigidbody.velocity != new Vector3(0,0,0))
+        if (IsGrounded())
         {
-            m_currentSpeed = Mathf.Lerp(m_currentSpeed, m_maxSpeed, 0.2f * Time.fixedDeltaTime);
-            m_TurnSpeed = m_currentSpeed / 1000;
-            Rotate();
+            float v = Input.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
+            Vector3 _move = (v * transform.forward);
+            Move(_move * m_currentSpeed);
+
+            if (m_Rigidbody.velocity != new Vector3(0, 0, 0))
+            {
+                m_currentSpeed = Mathf.Lerp(m_currentSpeed, m_maxSpeed, 0.2f * Time.fixedDeltaTime);
+                m_TurnSpeed = m_currentSpeed / 1000;
+                Rotate();
+            }
+
+            if (h == 0)
+            {
+                m_currentSpeed = Mathf.Lerp(m_currentSpeed, 1000f, 0.2f * Time.fixedDeltaTime);
+            }
+
+
+
         }
-
-        if (h == 0)
-        {
-            m_currentSpeed = Mathf.Lerp(m_currentSpeed, 1000f, 0.2f * Time.fixedDeltaTime);
-        }
-
-
-      
-
-        Debug.Log(m_TurnSpeed);
 
     }
 
