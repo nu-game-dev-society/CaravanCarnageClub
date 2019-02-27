@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour {
         m_TurnSpeed = 0;
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Transform = GetComponent<Transform>();
+        print(transform.position);
     }
 
 
