@@ -57,7 +57,6 @@ public class CUIColorPicker : MonoBehaviour
         var satvalKnob = GO( "SaturationValue/Knob" );
         var hueGO = GO( "Hue" );
         var hueKnob = GO( "Hue/Knob" );
-        var result = GO( "Result" );
         var hueColors = new Color [] {
             Color.red,
             Color.yellow,
@@ -107,8 +106,6 @@ public class CUIColorPicker : MonoBehaviour
             var c2 = isv.x * sv.y * satvalColors[2];
             var c3 = sv.x * sv.y * satvalColors[3];
             var resultColor = c0 + c1 + c2 + c3;
-            var resImg = result.GetComponent<Image>();
-            resImg.color = resultColor;
             if ( _color != resultColor ) {
                 if ( _onValueChange != null ) {
                     _onValueChange( resultColor );
