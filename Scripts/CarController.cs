@@ -18,12 +18,24 @@ public class CarController : MonoBehaviour {
     Rigidbody m_Rigidbody;
     Transform m_Transform;
 
+    AudioSource m_AudioSource;
+
+    [SerializeField] AudioClip accel, idle, deaccel, skid;
+   
+
     // Use this for initialization
     void Start ()
     {
         m_TurnSpeed = 0;
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Transform = GetComponent<Transform>();
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.clip = idle;
+        m_AudioSource.Play();
+       
+    
+
+        m_Rigidbody.centerOfMass = new Vector3(m_Rigidbody.centerOfMass.x, m_Rigidbody.centerOfMass.y - 1, m_Rigidbody.centerOfMass.z);
     }
 
 
@@ -45,10 +57,11 @@ public class CarController : MonoBehaviour {
     void FixedUpdate()
     {
 
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+
         if (IsGrounded())
         {
-            float v = Input.GetAxis("Vertical");
-            float h = Input.GetAxis("Horizontal");
             Vector3 _move = (v * transform.forward);
             Move(_move * m_currentSpeed);
 
@@ -64,9 +77,23 @@ public class CarController : MonoBehaviour {
                 m_currentSpeed = Mathf.Lerp(m_currentSpeed, 1000f, 0.2f * Time.fixedDeltaTime);
             }
 
-
-
         }
+
+
+       
+        
+
+        if(m_currentSpeed > 1000 && v > 0)
+            m_AudioSource.clip = accel;
+
+
+        if (m_currentSpeed > 1000 && v < 0)
+            m_AudioSource.clip = deaccel;
+
+
+        if (!m_AudioSource.isPlaying)
+            m_AudioSource.Play();
+
 
     }
 
@@ -79,8 +106,8 @@ public class CarController : MonoBehaviour {
 
     public void Rotate()
     {
-
-        float tiltAroundY = Input.GetAxis("Horizontal") * m_TurnSpeed;
+        
+        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * m_TurnSpeed;
 
         Vector3 targetRotation = new Vector3(0, 0, 0);
 
