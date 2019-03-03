@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
 [RequireComponent (typeof(Rigidbody))]
-public class CarController : MonoBehaviour {
+public class NetworkedCarController : NetworkBehaviour {
 
     [SerializeField] Rigidbody m_rigidbody;
 
@@ -21,6 +22,8 @@ public class CarController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        if (!isLocalPlayer)
+            return;
         m_TurnSpeed = 0;
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Transform = GetComponent<Transform>();
@@ -45,7 +48,8 @@ public class CarController : MonoBehaviour {
 
     void FixedUpdate()
     {
-
+        if (!isLocalPlayer)
+            return;
         if (IsGrounded())
         {
             float v = Input.GetAxis("Vertical");
