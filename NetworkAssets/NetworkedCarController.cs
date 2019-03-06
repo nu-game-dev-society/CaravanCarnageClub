@@ -9,16 +9,21 @@ public class NetworkedCarController : NetworkBehaviour {
     [SerializeField] Transform cVanSpawn;
     [SerializeField] GameObject caravansPrefab;
 
-    [SerializeField] Caravan[] caravanScripts;
-    public float m_acceleration;
+
+    LinkedList<Caravan> caravanScripts= new LinkedList<Caravan>();
     public float m_currentSpeed;
     public float m_maxSpeed;
     public float m_TurnSpeed;
 
+    [Header("Last Caravan Shit")]
+    [SerializeField] Transform nextSpawn;
+    [SerializeField] Rigidbody nextRB;
+    public int caravanCount;
+
 
     Rigidbody m_Rigidbody;
     Transform m_Transform;
-
+    float playerHeight;
     [SerializeField] Vector3 centreOfMass;
 
     // Use this for initialization
@@ -31,27 +36,12 @@ public class NetworkedCarController : NetworkBehaviour {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Rigidbody.centerOfMass = centreOfMass;
         m_Transform = GetComponent<Transform>();
-
-        GameObject cVans = Instantiate(caravansPrefab);
-        cVans.transform.position = cVanSpawn.position;
-        cVans.GetComponent<HingeJoint>().connectedBody = m_Rigidbody;
-        cVans.GetComponent<Rigidbody>().centerOfMass = centreOfMass;
-
-
+        playerHeight = GetComponent<BoxCollider>().size.y / 2 + 2f;
+        nextSpawn = cVanSpawn;
+        nextRB = m_Rigidbody;
     }
 
 
-    bool IsGrounded()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(m_Transform.position, -m_Transform.up, out hit))
-        {
-            if (hit.transform.CompareTag("Floor"))
-                return true;
-        }
-        return false;
-    }
 
 
 
@@ -79,10 +69,8 @@ public class NetworkedCarController : NetworkBehaviour {
                 m_currentSpeed = Mathf.Lerp(m_currentSpeed, 1000f, 0.2f * Time.fixedDeltaTime);
             }
         }
-        else
-        {
-            print("off floor");
-        }
+        if (Input.GetKeyDown(KeyCode.L))
+            SpawnCaravan();
 
     }
 
@@ -95,7 +83,7 @@ public class NetworkedCarController : NetworkBehaviour {
 
     public void Rotate()
     {
-        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * m_TurnSpeed;
+        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * (m_TurnSpeed/ (caravanCount + 1));
 
         Vector3 targetRotation = new Vector3(0, 0, 0);
 
@@ -107,6 +95,32 @@ public class NetworkedCarController : NetworkBehaviour {
         //transform.Rotate(0, tiltAroundY, 0);
         Quaternion deltaRotation = Quaternion.Euler(targetRotation);
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
+    }
+    bool IsGrounded()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(m_Transform.position, -m_Transform.up, out hit, playerHeight))
+        {
+            if (hit.transform.CompareTag("Floor"))
+                return true;
+        }
+        return false;
+    }
+    void SpawnCaravan()
+    {
+        GameObject cVans = Instantiate(caravansPrefab);
+        cVans.transform.position = nextSpawn.position;
+        cVans.transform.rotation = transform.rotation;
+
+        cVans.GetComponent<HingeJoint>().connectedBody = nextRB;
+        cVans.GetComponent<Rigidbody>().centerOfMass = centreOfMass;
+
+        Caravan c = cVans.GetComponent<Caravan>();
+        nextSpawn = c.Spawn(gameObject);
+        nextRB = c.GetRigidbody();
+        caravanScripts.AddLast(c);
+        caravanCount++;
+        m_maxSpeed = 3000 * (caravanCount + 1);
     }
 
 

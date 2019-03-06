@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035598856535826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: -15.5}
+  m_LocalPosition: {x: 0, y: 2.3757153, z: -15.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4736529858294362}
@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1194446048405848}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.18825561, z: 25.493404}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4948043972169518}
@@ -166,7 +166,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 96
   m_CollisionDetection: 0
 --- !u!65 &65146140594913006
 BoxCollider:
@@ -206,11 +206,11 @@ MonoBehaviour:
   cVanSpawn: {fileID: 4697084413434534}
   caravansPrefab: {fileID: 1803138423602634, guid: e1173e78329ee0344bcaf85000a6267b,
     type: 2}
-  caravanScripts: []
   m_acceleration: 2
   m_currentSpeed: 1000
-  m_maxSpeed: 8000
+  m_maxSpeed: 6000
   m_TurnSpeed: 3
+  centreOfMass: {x: 0, y: 0, z: 0}
 --- !u!114 &114240580398291952
 MonoBehaviour:
   m_ObjectHideFlags: 1
