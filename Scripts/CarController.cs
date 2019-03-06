@@ -6,9 +6,6 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody))]
 public class CarController : MonoBehaviour {
 
-    [SerializeField] Rigidbody m_rigidbody;
-
-
     public float m_acceleration;
     public float m_currentSpeed;
     public float m_maxSpeed;
@@ -18,6 +15,8 @@ public class CarController : MonoBehaviour {
     Rigidbody m_Rigidbody;
     Transform m_Transform;
 
+    [SerializeField]Vector3 centreOfMass;
+
     // Use this for initialization
     void Start ()
     {
@@ -25,6 +24,8 @@ public class CarController : MonoBehaviour {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Transform = GetComponent<Transform>();
         print(transform.position);
+
+        m_Rigidbody.centerOfMass = centreOfMass;
     }
 
 
@@ -81,9 +82,11 @@ public class CarController : MonoBehaviour {
     public void Rotate()
     {
 
-        float tiltAroundY = Input.GetAxis("Horizontal") * m_TurnSpeed;
+        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * m_TurnSpeed;
 
         Vector3 targetRotation = new Vector3(0, 0, 0);
+
+
 
         if (Input.GetAxis("Horizontal") != 0)
             targetRotation = new Vector3(0, tiltAroundY, 0);
