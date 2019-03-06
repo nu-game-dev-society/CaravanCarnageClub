@@ -8,29 +8,39 @@ public class CarColour : MonoBehaviour {
     private Texture carTex;
 
     [SerializeField]
-    private Material carMat;
-    
-    private Material newCarMat;
+    private Material carBodyMat;
 
     [SerializeField]
     private MeshRenderer car;
 
     [SerializeField]
-    private CUIColorPicker colPic;
+    private CUIColorPicker colBodyPic;
+
+    [SerializeField]
+    private Material carHoodMat;
+
+    [SerializeField]
+    private CUIColorPicker colHoodPic;
+
+    private Material newCarBodyMat;
+    private Material newCarHoodMat;
 
     // Use this for initialization
     void Start ()
     {
-        //newCarMat = carMat;
-        newCarMat = new Material(carMat);
+        newCarBodyMat = new Material(carBodyMat);
+        newCarHoodMat = new Material(carHoodMat);
+
         Material[] mats = car.materials;
-        mats[2] = newCarMat;
+        mats[2] = newCarBodyMat;
+        mats[3] = newCarHoodMat;
         car.materials = mats;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        newCarMat.color = colPic.Color;
-	}
+        newCarBodyMat.color = colBodyPic.Color;
+        newCarHoodMat.color = colHoodPic.Color;
+    }
 }
