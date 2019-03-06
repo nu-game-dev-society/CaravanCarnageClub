@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1194446048405848}
   m_IsPrefabAsset: 1
+--- !u!1 &1035598856535826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4697084413434534}
+  m_Layer: 0
+  m_Name: CaravanSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1194446048405848
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,6 +64,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4697084413434534
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1035598856535826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: -15.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4736529858294362}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4736529858294362
 Transform:
   m_ObjectHideFlags: 1
@@ -56,10 +84,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1194446048405848}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1791477, y: 5.95, z: -34.66}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4948043972169518}
+  - {fileID: 4697084413434534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,10 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3842c74deaa048349a3d9dcd230ed4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rigidbody: {fileID: 0}
+  cVanSpawn: {fileID: 4697084413434534}
+  caravansPrefab: {fileID: 1803138423602634, guid: e1173e78329ee0344bcaf85000a6267b,
+    type: 2}
+  caravanScripts: []
   m_acceleration: 2
   m_currentSpeed: 1000
-  m_maxSpeed: 3000
+  m_maxSpeed: 8000
   m_TurnSpeed: 3
 --- !u!114 &114240580398291952
 MonoBehaviour:

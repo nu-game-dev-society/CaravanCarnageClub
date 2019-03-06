@@ -6,10 +6,10 @@ using UnityEngine.Networking;
 
 [RequireComponent (typeof(Rigidbody))]
 public class NetworkedCarController : NetworkBehaviour {
+    [SerializeField] Transform cVanSpawn;
+    [SerializeField] GameObject caravansPrefab;
 
-    [SerializeField] Rigidbody m_rigidbody;
-
-
+    [SerializeField] Caravan[] caravanScripts;
     public float m_acceleration;
     public float m_currentSpeed;
     public float m_maxSpeed;
@@ -19,15 +19,25 @@ public class NetworkedCarController : NetworkBehaviour {
     Rigidbody m_Rigidbody;
     Transform m_Transform;
 
+    [SerializeField] Vector3 centreOfMass;
+
     // Use this for initialization
     void Start ()
     {
         if (!isLocalPlayer)
             return;
+
         m_TurnSpeed = 0;
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody.centerOfMass = centreOfMass;
         m_Transform = GetComponent<Transform>();
-        print(transform.position);
+
+        GameObject cVans = Instantiate(caravansPrefab);
+        cVans.transform.position = cVanSpawn.position;
+        cVans.GetComponent<HingeJoint>().connectedBody = m_Rigidbody;
+        cVans.GetComponent<Rigidbody>().centerOfMass = centreOfMass;
+
+
     }
 
 
@@ -68,9 +78,10 @@ public class NetworkedCarController : NetworkBehaviour {
             {
                 m_currentSpeed = Mathf.Lerp(m_currentSpeed, 1000f, 0.2f * Time.fixedDeltaTime);
             }
-
-
-
+        }
+        else
+        {
+            print("off floor");
         }
 
     }
@@ -84,8 +95,7 @@ public class NetworkedCarController : NetworkBehaviour {
 
     public void Rotate()
     {
-
-        float tiltAroundY = Input.GetAxis("Horizontal") * m_TurnSpeed;
+        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * m_TurnSpeed;
 
         Vector3 targetRotation = new Vector3(0, 0, 0);
 
