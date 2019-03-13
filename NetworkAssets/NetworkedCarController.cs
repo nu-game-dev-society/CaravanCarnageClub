@@ -41,11 +41,6 @@ public class NetworkedCarController : NetworkBehaviour {
         nextRB = m_Rigidbody;
     }
 
-
-
-
-
-
     void FixedUpdate()
     {
         if (!isLocalPlayer)
@@ -83,7 +78,7 @@ public class NetworkedCarController : NetworkBehaviour {
 
     public void Rotate()
     {
-        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * (m_TurnSpeed/ (caravanCount + 1));
+        float tiltAroundY = Input.GetAxis("Horizontal") * Input.GetAxis("Vertical") * (m_TurnSpeed/((caravanCount + 1)*2));
 
         Vector3 targetRotation = new Vector3(0, 0, 0);
 
@@ -109,7 +104,8 @@ public class NetworkedCarController : NetworkBehaviour {
     void SpawnCaravan()
     {
         GameObject cVans = Instantiate(caravansPrefab);
-        cVans.transform.position = nextSpawn.position;
+        
+        //cVans.transform.position = nextSpawn.position;
         cVans.transform.rotation = transform.rotation;
 
         cVans.GetComponent<HingeJoint>().connectedBody = nextRB;
@@ -119,8 +115,11 @@ public class NetworkedCarController : NetworkBehaviour {
         nextSpawn = c.Spawn(gameObject);
         nextRB = c.GetRigidbody();
         caravanScripts.AddLast(c);
+
+        NetworkServer.Spawn(cVans);
         caravanCount++;
-        m_maxSpeed = 3000 * (caravanCount + 1);
+        m_maxSpeed = 6000 * (caravanCount + 1);
+        Debug.Log(m_maxSpeed);
     }
 
 
