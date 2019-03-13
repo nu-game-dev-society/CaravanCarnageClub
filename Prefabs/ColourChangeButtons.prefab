@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222201034202046968}
   - component: {fileID: 114603365853454136}
   - component: {fileID: 114507120107495864}
+  - component: {fileID: 114015170226475444}
   - component: {fileID: 114562202213059444}
   m_Layer: 5
   m_Name: HoodButton
@@ -59,6 +60,7 @@ GameObject:
   - component: {fileID: 222641871755318876}
   - component: {fileID: 114529779772734388}
   - component: {fileID: 114947819338568620}
+  - component: {fileID: 114042123667567698}
   - component: {fileID: 114261717793158594}
   m_Layer: 5
   m_Name: BodyButton
@@ -445,6 +447,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114015170226475444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100075529157816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114040413773462554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,6 +484,20 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &114042123667567698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141962401449424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114048154689402496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -538,10 +568,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 7b39e736c064cee45a92c4dbf237e974, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -550,7 +580,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Body Colour
+  m_Text: BODY
 --- !u!114 &114071802062272060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -684,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorPicker: {fileID: 1243589869454650}
-  recentColorPrefab: {fileID: 1134103709643438, guid: 420a9d54422e9654d85f71015e72344b,
+  recentColorPrefab: {fileID: 1164450167875310, guid: e71f717e73508294e84a2527ea1d86fe,
     type: 2}
   prefField: CarBodyRecent
 --- !u!114 &114292436717064080
@@ -787,10 +817,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.94117653, g: 0.4039216, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6098478, b: 0.315, a: 1}
+    m_PressedColor: {r: 0.6226415, g: 0.26800656, b: 0, a: 1}
+    m_DisabledColor: {r: 0.5471698, g: 0.33292893, b: 0.17292629, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -875,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorPicker: {fileID: 1697663827302382}
-  recentColorPrefab: {fileID: 1134103709643438, guid: 420a9d54422e9654d85f71015e72344b,
+  recentColorPrefab: {fileID: 1164450167875310, guid: e71f717e73508294e84a2527ea1d86fe,
     type: 2}
   prefField: CarHoodRecent
 --- !u!114 &114570427311013910
@@ -1039,7 +1069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1047,10 +1077,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 7b39e736c064cee45a92c4dbf237e974, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -1059,7 +1089,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hood Colour
+  m_Text: HOOD
 --- !u!114 &114947819338568620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1079,10 +1109,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.94117653, g: 0.4039216, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6098478, b: 0.315, a: 1}
+    m_PressedColor: {r: 0.6226415, g: 0.26800656, b: 0, a: 1}
+    m_DisabledColor: {r: 0.5471698, g: 0.33292893, b: 0.17292629, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1257,7 +1287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -135}
+  m_AnchoredPosition: {x: 158.8, y: -282.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224115611298803770
