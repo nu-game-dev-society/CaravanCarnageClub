@@ -40,8 +40,10 @@ GameObject:
   - component: {fileID: 54944719675862334}
   - component: {fileID: 114690090553928942}
   - component: {fileID: 59032491838150150}
+  - component: {fileID: 114342875152712450}
+  - component: {fileID: 114623923171493844}
   m_Layer: 0
-  m_Name: Caravan
+  m_Name: caravan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803138423602634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8672943, y: 0.2969644, z: 50.635902}
+  m_LocalPosition: {x: 1.6491547, y: 0.2969644, z: -86.58356}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4126386404577266}
@@ -181,6 +183,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.82, y: 6.03, z: 13.6}
   m_Center: {x: 0, y: 0.94, z: 0.78}
+--- !u!114 &114342875152712450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803138423602634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 225
+    i1: 23
+    i2: 62
+    i3: 120
+    i4: 50
+    i5: 158
+    i6: 224
+    i7: 52
+    i8: 75
+    i9: 202
+    i10: 248
+    i11: 80
+    i12: 0
+    i13: 166
+    i14: 38
+    i15: 123
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114623923171493844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803138423602634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.055555556
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 1
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 3
+  m_InterpolateMovement: 2
 --- !u!114 &114690090553928942
 MonoBehaviour:
   m_ObjectHideFlags: 1
