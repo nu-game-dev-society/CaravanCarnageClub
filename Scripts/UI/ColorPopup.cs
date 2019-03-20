@@ -15,6 +15,12 @@ public class ColorPopup : MonoBehaviour {
     [SerializeField]
     string prefField;
 
+    [SerializeField]
+    Button toggleButton;
+
+    [SerializeField]
+    Button backgroundButton;
+
     private Transform recent;
 
     private Color getColFromPrefStr(string colour)
@@ -63,28 +69,39 @@ public class ColorPopup : MonoBehaviour {
             }
         }
 
-        PlayerPrefs.SetString(prefField, newColsStr.Trim(';'));
-
+        PlayerPrefs.SetString(prefField + "Recent", newColsStr.Trim(';'));
     }
 
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(Toggle);
+        toggleButton.onClick.AddListener(Toggle);
+        backgroundButton.onClick.AddListener(Hide);
         recent = colorPicker.transform.Find("CUIColorPicker/Recent");
 
         if (PlayerPrefs.GetString(prefField + "Current", "") == "")
         {
-            if (prefField == "CarBody")
-            {
-                PlayerPrefs.SetString(prefField + "Current", (new Color((float)14 / 255, (float)63 / 255, (float)16 / 255)).ToString());
-            }
-            else if (prefField == "CarHood")
-            {
-                PlayerPrefs.SetString(prefField + "Current", (new Color((float)0 / 255, (float)0 / 255, (float)0 / 255)).ToString());
-            }
+            reset();
         }
 
         colorPicker.GetComponentInChildren<CUIColorPicker>().Color = getColFromPrefStr(PlayerPrefs.GetString(prefField + "Current", ""));
+    }
+
+    public void reset()
+    {
+        Color defCol = Color.white;
+
+        if (prefField == "CarBody")
+        {
+            defCol = new Color((float)14 / 255, (float)63 / 255, (float)16 / 255);
+        }
+        else if (prefField == "CarHood")
+        {
+            defCol = new Color((float)0 / 255, (float)0 / 255, (float)0 / 255);
+        }
+
+        PlayerPrefs.SetString(prefField + "Current", defCol.ToString());
+        AddColPref(defCol);
+        colorPicker.GetComponentInChildren<CUIColorPicker>().Color = defCol;
     }
 
     private void Toggle()
