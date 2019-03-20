@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Caravan : MonoBehaviour
 {
-
+    [SerializeField] Transform nextSpawn;
     [SerializeField] PlayerManager playerManager;
     [SerializeField] int index;
 
-    public void Start()
+    public Transform Spawn(GameObject player)
     {
-        playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        playerManager = player.GetComponent<PlayerManager>();
+        return nextSpawn;
+    }
+    public Rigidbody GetRigidbody()
+    {
+        return GetComponent<Rigidbody>();
     }
 
     public void OnCollisionEnter(Collision collision)

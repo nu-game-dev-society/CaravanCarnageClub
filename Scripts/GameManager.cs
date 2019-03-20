@@ -26,9 +26,12 @@ public class GameManager : MonoBehaviour {
         if(timeLeft > 0)
             timeLeft -= Time.deltaTime;
         UIManager.Instance.UpdateTimer(timeLeft);
-        if (lastCaravan != pM.caravansCollected)
+        if (pM != null)
         {
-            lastCaravan = pM.caravansCollected;
+            if (lastCaravan != pM.caravansCollected)
+            {
+                lastCaravan = pM.caravansCollected;
+            }
         }
         score += Time.deltaTime*20+ (Time.deltaTime * pM.caravansCollected * 3f);
         UIManager.Instance.UpdateScore((int)Mathf.RoundToInt(score));
