@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Explosions : MonoBehaviour {
 
-    public AudioSource audio;
+    public AudioSource audioSource;
     
 
 	// Use this for initialization
 	void Start () {
-        audio.Play();
+        audioSource.Play();
         StartCoroutine(Decay());
 	}
 
