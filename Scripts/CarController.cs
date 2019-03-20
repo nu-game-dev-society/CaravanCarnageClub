@@ -31,12 +31,14 @@ public class CarController : MonoBehaviour {
 
     bool IsGrounded()
     {
-        RaycastHit hit;
+        RaycastHit hit; 
 
-        if (Physics.Raycast(m_Transform.position, -m_Transform.up, out hit))
+        if (Physics.Raycast(m_Transform.position, -m_Transform.up, out hit, 2f))
         {
             if (hit.transform.CompareTag("Floor"))
                 return true;
+
+
         }
         return false;
     }
@@ -67,6 +69,7 @@ public class CarController : MonoBehaviour {
             }
 
 
+            Debug.Log("Aye");
 
         }
 

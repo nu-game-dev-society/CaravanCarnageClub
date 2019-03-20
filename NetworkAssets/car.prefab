@@ -166,7 +166,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 96
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65146140594913006
 BoxCollider:
@@ -206,10 +206,12 @@ MonoBehaviour:
   cVanSpawn: {fileID: 4697084413434534}
   caravansPrefab: {fileID: 1803138423602634, guid: e1173e78329ee0344bcaf85000a6267b,
     type: 2}
-  m_acceleration: 2
   m_currentSpeed: 1000
   m_maxSpeed: 6000
   m_TurnSpeed: 3
+  nextSpawn: {fileID: 0}
+  nextRB: {fileID: 0}
+  caravanCount: 0
   centreOfMass: {x: 0, y: 0, z: 0}
 --- !u!114 &114240580398291952
 MonoBehaviour:
@@ -223,15 +225,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.09090909
+  m_SendInterval: 0.04347826
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
+  m_SyncSpin: 1
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 2
-  m_InterpolateMovement: 1
+  m_InterpolateRotation: 3
+  m_InterpolateMovement: 1.5
 --- !u!114 &114936360964303066
 MonoBehaviour:
   m_ObjectHideFlags: 1
