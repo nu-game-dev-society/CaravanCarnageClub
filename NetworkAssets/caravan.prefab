@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114690090553928942}
   - component: {fileID: 59032491838150150}
   m_Layer: 0
-  m_Name: Caravan
+  m_Name: caravan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
