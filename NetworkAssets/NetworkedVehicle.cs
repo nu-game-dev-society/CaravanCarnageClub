@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NetworkedVehicle : MonoBehaviour{
+public class NetworkedVehicle : NetworkBehaviour{
 	
 	public bool controllable = true;
 
-	[Header("Components")]
-	
+    [Header("Components")]
+    public GameObject MotorPrefab;
 	public Transform vehicleModel;
     public Rigidbody sphere;
 	
@@ -52,8 +52,13 @@ public class NetworkedVehicle : MonoBehaviour{
 	
 	// Functions
 	
-	void Awake(){
-		foreach(Transform t in GetComponentsInChildren<Transform>()){
+	void Start(){
+        if (!isLocalPlayer)
+            return;
+        GameObject m = Instantiate(MotorPrefab);
+        m.transform.position = transform.position;
+        sphere = m.GetComponent<Rigidbody>();
+        foreach (Transform t in GetComponentsInChildren<Transform>()){
 			
 			switch(t.name){
 				
@@ -79,7 +84,8 @@ public class NetworkedVehicle : MonoBehaviour{
 	
 	void Update(){
         // Acceleration
-
+        if (!isLocalPlayer)
+            return;
         speedTarget = Mathf.SmoothStep(speedTarget, speed, Time.deltaTime * 12f); speed = 0f;
 		
 		if(controllable){
@@ -95,10 +101,8 @@ public class NetworkedVehicle : MonoBehaviour{
 		
 		if(controllable && (nearGround || steerInAir) && (Input.GetKey(accelerate) || Input.GetKey(brake)))
         {
-			
 			if(Input.GetKey(steerLeft)) { rotate = -steering; }
-			if(Input.GetKey(steerRight)){ rotate =  steering; }
-			
+			if(Input.GetKey(steerRight)) { rotate =  steering; }
 		}
 		
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, transform.eulerAngles.y + rotateTarget, 0)), Time.deltaTime * 2.0f);
@@ -120,15 +124,16 @@ public class NetworkedVehicle : MonoBehaviour{
 		
 		container.localPosition = containerBase + new Vector3(0, Mathf.Abs(tilt) / 2000, 0);
 		container.localRotation = Quaternion.Slerp(container.localRotation, Quaternion.Euler(0, rotateTarget / 8, tilt), Time.deltaTime * 10.0f);
-		
-		// Effects
-		
-		smoke.transform.localPosition = new Vector3(-rotateTarget / 100, smoke.transform.localPosition.y, smoke.transform.localPosition.z);
-		smoke.enableEmission = onGround && sphere.velocity.magnitude > (acceleration / 4) && Vector3.Angle(sphere.velocity, vehicleModel.forward) > 30.0f;
-		
-		if(trailLeft != null){   trailLeft.emitting = smoke.enableEmission; }
-		if(trailRight != null){ trailRight.emitting = smoke.enableEmission; }
-		
+
+        // Effects
+        if (smoke != null)
+        {
+            smoke.transform.localPosition = new Vector3(-rotateTarget / 100, smoke.transform.localPosition.y, smoke.transform.localPosition.z);
+            smoke.enableEmission = onGround && sphere.velocity.magnitude > (acceleration / 4) && Vector3.Angle(sphere.velocity, vehicleModel.forward) > 30.0f;
+
+            if (trailLeft != null) { trailLeft.emitting = smoke.enableEmission; }
+            if (trailRight != null) { trailRight.emitting = smoke.enableEmission; }
+        }
 		// Stops vehicle from floating around when standing still
 		
 		if(speed == 0 && sphere.velocity.magnitude < 4f){ sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f); }
@@ -138,6 +143,9 @@ public class NetworkedVehicle : MonoBehaviour{
 	// Physics update
 	
 	void FixedUpdate(){
+        if (!isLocalPlayer)
+            return;
+
         RaycastHit hitOn;
 		RaycastHit hitNear;
 		
@@ -172,8 +180,9 @@ public class NetworkedVehicle : MonoBehaviour{
 	// Hit objects
 	
 	void OnTriggerEnter(Collider other){
-		
-		if(other.GetComponent<PhysicsObject>()){ other.GetComponent<PhysicsObject>().Hit(sphere.velocity); }
+        if (!isLocalPlayer)
+            return;
+        if (other.GetComponent<PhysicsObject>()){ other.GetComponent<PhysicsObject>().Hit(sphere.velocity); }
     }
 	
 }
