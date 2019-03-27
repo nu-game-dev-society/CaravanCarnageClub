@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 4756071344090062}
   - component: {fileID: 135260173467603724}
   - component: {fileID: 114776494376467020}
+  - component: {fileID: 114534770293449484}
+  - component: {fileID: 114637262163228364}
   m_Layer: 2
   m_Name: Vehicle
   m_TagString: Untagged
@@ -207,6 +209,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549728845335380}
   m_Mesh: {fileID: 4300000, guid: 5b75a9afa8c2da1478fcc67f83894ff1, type: 3}
+--- !u!114 &114534770293449484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325572696566114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 115
+    i1: 118
+    i2: 141
+    i3: 135
+    i4: 225
+    i5: 191
+    i6: 236
+    i7: 52
+    i8: 40
+    i9: 38
+    i10: 50
+    i11: 75
+    i12: 71
+    i13: 140
+    i14: 79
+    i15: 208
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114637262163228364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325572696566114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 1
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 3
+  m_InterpolateMovement: 3
 --- !u!114 &114776494376467020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,8 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllable: 1
+  MotorPrefab: {fileID: 1715625257405596, guid: 14a11a4ad0a433f4191968e354f3402f,
+    type: 2}
   vehicleModel: {fileID: 4034535605641280}
-  sphere: {fileID: 0}
+  sphere: {fileID: 54406504236714104, guid: 14a11a4ad0a433f4191968e354f3402f, type: 2}
   accelerate: 119
   brake: 115
   steerLeft: 97
