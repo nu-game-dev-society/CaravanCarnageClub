@@ -8,28 +8,17 @@ public class Vehicle : MonoBehaviour{
 	public bool controllable = true;
 
 	[Header("Components")]
-	
 	public Transform vehicleModel;
 	public Rigidbody sphere;
 	
-	[Header("Controls")]
-	
-	public KeyCode accelerate;
-	public KeyCode brake;
-	public KeyCode steerLeft;
-	public KeyCode steerRight;
-	public KeyCode jump;
-	
 	[Header("Parameters")]
 	
-	[Range(5.0f, 40.0f)] public float acceleration = 30f;
+	[Range(5.0f, 100.0f)] public float acceleration = 30f;
 	[Range(20.0f, 160.0f)] public float steering = 80f;
 	[Range(50.0f, 80.0f)] public float jumpForce = 60f;
 	[Range(0.0f, 20.0f)] public float gravity = 10f;
 	
 	[Header("Switches")]
-	
-	public bool jumpAbility = false;
 	public bool steerInAir = true;
 	public bool motorcycleTilt = false;
 	
@@ -59,13 +48,11 @@ public class Vehicle : MonoBehaviour{
 			switch(t.name){
 				
 				// Vehicle components
-				
 				case "wheelFrontLeft": wheelFrontLeft = t; break;
 				case "wheelFrontRight": wheelFrontRight = t; break;
 				case "body": body = t; break;
 				
 				// Vehicle effects
-				
 				case "smoke": smoke = t.GetComponent<ParticleSystem>(); break;
 				case "trailLeft": trailLeft = t.GetComponent<TrailRenderer>(); break;
 				case "trailRight": trailRight = t.GetComponent<TrailRenderer>(); break;
@@ -86,29 +73,23 @@ public class Vehicle : MonoBehaviour{
 		speedTarget = Mathf.SmoothStep(speedTarget, speed, Time.deltaTime * 12f); speed = 0f;
 		
 		if(controllable){
-			
-			if(Input.GetKey(accelerate)){ speed = acceleration; }
-			if(Input.GetKey(brake)){ speed = -acceleration; }
-			
+			if(Input.GetAxisRaw("Vertical") != 0){ speed = acceleration * Input.GetAxisRaw("Vertical"); }	
 		}
 		
 		// Steering
 		
 		rotateTarget = Mathf.Lerp(rotateTarget, rotate, Time.deltaTime * 4f); rotate = 0f;
 		
-		if(controllable && (nearGround || steerInAir) && (Input.GetKey(accelerate) || Input.GetKey(brake)))
+		if(controllable && (nearGround || steerInAir) && Input.GetAxisRaw("Vertical") != 0)
         {
-			
-			if(Input.GetKey(steerLeft)) { rotate = -steering; }
-			if(Input.GetKey(steerRight)){ rotate =  steering; }
+            if (Input.GetAxisRaw("Horizontal") != 0)
+            {
+                rotate += (steering * Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical"));
+            }
 			
 		}
 		
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, transform.eulerAngles.y + rotateTarget, 0)), Time.deltaTime * 2.0f);
-		
-		// Jump
-		
-		if(controllable && jumpAbility && nearGround && Input.GetKeyDown(jump)){ sphere.AddForce(Vector3.up * (jumpForce * 20), ForceMode.Impulse); }
 		
 		// Wheel and body tilt
 		
@@ -177,7 +158,7 @@ public class Vehicle : MonoBehaviour{
 	
 	void OnTriggerEnter(Collider other){
 		
-		if(other.GetComponent<PhysicsObject>()){ other.GetComponent<PhysicsObject>().Hit(sphere.velocity); }
+		//if(other.GetComponent<PhysicsObject>()){ other.GetComponent<PhysicsObject>().Hit(sphere.velocity); }
 		
     }
 	
