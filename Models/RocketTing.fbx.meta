@@ -15,8 +15,10 @@ ModelImporter:
     2100006: Material.003
     2300000: Cone
     2300002: Cylinder
+    2300004: //RootNode
     3300000: Cone
     3300002: Cylinder
+    3300004: //RootNode
     4300000: Cone
     4300002: Cylinder
   externalObjects: {}
