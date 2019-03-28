@@ -125,6 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4225254777796128}
+  - component: {fileID: 114729511075257166}
   m_Layer: 0
   m_Name: Barrel3D
   m_TagString: Untagged
@@ -170,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1755166943921192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: 2, z: 20}
+  m_LocalPosition: {x: 21.40038, y: 2, z: -10.453636}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4264148173910212}
@@ -535,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70d225cec9390f489b162f88ab61006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 82405658598789360}
+  audioSource: {fileID: 0}
 --- !u!114 &114695198812816096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -551,6 +552,19 @@ MonoBehaviour:
   shakeDuration: 0
   shakeAmount: 0.7
   decreaseFactor: 1
+--- !u!114 &114729511075257166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755166943921192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5309700da4717b409f4bb8fc7dc3c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 6fb335d69c4f52a41b944378693bd0b2, type: 2}
+  speed: 5
 --- !u!136 &136016249756780610
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -558,7 +572,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1190536815364692}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -571,7 +585,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472755797056892}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -584,7 +598,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1591694027609502}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -597,7 +611,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364013366056148}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
