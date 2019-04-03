@@ -32,7 +32,7 @@ public class Vehicle : MonoBehaviour{
 	
 	// Private
 	
-	float speed, speedTarget;
+	public float speed, speedTarget;
 	float rotate, rotateTarget;
 	
 	bool nearGround, onGround;
@@ -77,14 +77,13 @@ public class Vehicle : MonoBehaviour{
 		}
 		
 		// Steering
-		
 		rotateTarget = Mathf.Lerp(rotateTarget, rotate, Time.deltaTime * 4f); rotate = 0f;
 		
 		if(controllable && (nearGround || steerInAir) && Input.GetAxisRaw("Vertical") != 0)
         {
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
-                rotate += (steering * Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical"));
+                RotateCar(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
             }
 			
 		}
@@ -104,14 +103,19 @@ public class Vehicle : MonoBehaviour{
 		
 		container.localPosition = containerBase + new Vector3(0, Mathf.Abs(tilt) / 2000, 0);
 		container.localRotation = Quaternion.Slerp(container.localRotation, Quaternion.Euler(0, rotateTarget / 8, tilt), Time.deltaTime * 10.0f);
-		
-		// Effects
-		
-		smoke.transform.localPosition = new Vector3(-rotateTarget / 100, smoke.transform.localPosition.y, smoke.transform.localPosition.z);
-		smoke.enableEmission = onGround && sphere.velocity.magnitude > (acceleration / 4) && Vector3.Angle(sphere.velocity, vehicleModel.forward) > 30.0f;
-		
-		if(trailLeft != null){   trailLeft.emitting = smoke.enableEmission; }
-		if(trailRight != null){ trailRight.emitting = smoke.enableEmission; }
+
+        // Effects
+
+        if (smoke != null)
+        {
+            smoke.transform.localPosition = new Vector3(-rotateTarget / 100, smoke.transform.localPosition.y, smoke.transform.localPosition.z);
+            smoke.enableEmission = onGround && sphere.velocity.magnitude > (acceleration / 4) && Vector3.Angle(sphere.velocity, vehicleModel.forward) > 30.0f;
+
+
+            if (trailLeft != null) { trailLeft.emitting = smoke.enableEmission; }
+            if (trailRight != null) { trailRight.emitting = smoke.enableEmission; }
+
+        }
 		
 		// Stops vehicle from floating around when standing still
 		
@@ -153,6 +157,19 @@ public class Vehicle : MonoBehaviour{
 		transform.position = sphere.transform.position + new Vector3(0, 0.35f, 0);
 		
 	}
+
+
+    public void RotateCar(float rotateAmount, float directionValue)
+    {
+        if ((nearGround || steerInAir))
+        {
+            if (directionValue != 0)
+            {
+
+                rotate += (steering * rotateAmount * directionValue);
+            }
+        }
+    }
 	
 	// Hit objects
 	
