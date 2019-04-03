@@ -11,8 +11,16 @@ public class NetworkedVehicle : NetworkBehaviour{
     public GameObject MotorPrefab;
 	public Transform vehicleModel;
     public Rigidbody sphere;
-	
-	[Header("Controls")]
+
+    [Header("Caravans")]
+    [SerializeField] GameObject caravanPrefab;
+    [Tooltip("Next Caravans Spawn Point")]
+    [SerializeField] Transform nextSpawn;
+    [Tooltip("RigidBody of last caravan, starts as car rb")]
+    [SerializeField] Rigidbody nextRB;
+    public int caravanCount;
+
+    [Header("Controls")]
 	
 	public KeyCode accelerate;
 	public KeyCode brake;
@@ -79,8 +87,8 @@ public class NetworkedVehicle : NetworkBehaviour{
 		}
 		container = vehicleModel.GetChild(0);
 		containerBase = container.localPosition;
-		
-	}
+        nextRB = GetComponent<Rigidbody>();
+    }
 	
 	void Update(){
         // Acceleration
@@ -92,7 +100,6 @@ public class NetworkedVehicle : NetworkBehaviour{
 			
 			if(Input.GetKey(accelerate)){ speed = acceleration; }
 			if(Input.GetKey(brake)){ speed = -acceleration; }
-			
 		}
 		
 		// Steering
@@ -137,7 +144,12 @@ public class NetworkedVehicle : NetworkBehaviour{
 		// Stops vehicle from floating around when standing still
 		
 		if(speed == 0 && sphere.velocity.magnitude < 4f){ sphere.velocity = Vector3.Lerp(sphere.velocity, Vector3.zero, Time.deltaTime * 2.0f); }
-		
+
+
+
+        //add carvanas
+        if (Input.GetKeyDown(KeyCode.L))
+            SpawnCaravan();
 	}
 	
 	// Physics update
@@ -183,6 +195,21 @@ public class NetworkedVehicle : NetworkBehaviour{
         if (!isLocalPlayer)
             return;
         if (other.GetComponent<PhysicsObject>()){ other.GetComponent<PhysicsObject>().Hit(sphere.velocity); }
+    }
+    void SpawnCaravan()
+    {
+        GameObject cVan = Instantiate(caravanPrefab);
+
+        cVan.transform.position = nextSpawn.position;
+        cVan.transform.rotation = transform.rotation;
+
+        cVan.GetComponent<HingeJoint>().connectedBody = nextRB;
+        cVan.GetComponent<HingeJoint>().anchor = nextSpawn.position;
+
+        nextRB = cVan.GetComponent<Rigidbody>();
+        nextSpawn = cVan.transform.GetChild(0);
+
+        caravanCount++;
     }
 	
 }
