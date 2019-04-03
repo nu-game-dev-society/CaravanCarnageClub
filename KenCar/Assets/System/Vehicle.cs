@@ -32,7 +32,7 @@ public class Vehicle : MonoBehaviour{
 	
 	// Private
 	
-	float speed, speedTarget;
+	public float speed, speedTarget;
 	float rotate, rotateTarget;
 	
 	bool nearGround, onGround;
@@ -161,7 +161,7 @@ public class Vehicle : MonoBehaviour{
 
     public void RotateCar(float rotateAmount, float directionValue)
     {
-        if (controllable && (nearGround || steerInAir))
+        if ((nearGround || steerInAir))
         {
             if (directionValue != 0)
             {
